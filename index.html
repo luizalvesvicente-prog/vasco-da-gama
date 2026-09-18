@@ -1,11 +1,10 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Vasco da Gama — Gigante da Colina</title>
+    <title>Vasco da Gama | Gigante da Colina</title>
 
     <style>
         * {
@@ -14,92 +13,700 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: Arial, Helvetica, sans-serif;
             background:
-                radial-gradient(circle at top, #252525 0%, #090909 45%, #000 100%);
+                linear-gradient(rgba(0,0,0,.88), rgba(10,10,10,.96)),
+                radial-gradient(circle at top, #333, #050505);
             color: white;
             min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* LINHA DECORATIVA */
-        body::before {
-            content: "";
-            position: fixed;
-            left: 50%;
-            top: 0;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: rgba(255,255,255,0.025);
-            pointer-events: none;
         }
 
         /* HEADER */
+
         header {
             min-height: 430px;
-            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            padding: 50px 20px;
+            position: relative;
             overflow: hidden;
-
             background:
-                linear-gradient(
-                    135deg,
-                    rgba(0,0,0,.92),
-                    rgba(20,20,20,.85)
-                );
+                linear-gradient(135deg, #050505, #151515 50%, #000);
+            border-bottom: 3px solid #e30613;
         }
 
-        header::after {
+        header::before {
             content: "";
             position: absolute;
-            width: 700px;
-            height: 700px;
+            width: 600px;
+            height: 600px;
+            background: rgba(220, 0, 20, .08);
             border-radius: 50%;
-            background: radial-gradient(
-                circle,
-                rgba(255,255,255,.10),
-                transparent 65%
-            );
+            filter: blur(10px);
             animation: pulse 5s infinite alternate;
         }
 
         @keyframes pulse {
             from {
-                transform: scale(.9);
-                opacity: .4;
+                transform: scale(.8);
+                opacity: .3;
             }
 
             to {
-                transform: scale(1.1);
-                opacity: .8;
+                transform: scale(1.2);
+                opacity: .7;
             }
         }
 
-        .header-content {
+        .hero {
             position: relative;
             z-index: 2;
-            padding: 30px;
+            max-width: 900px;
+        }
+
+        .escudo {
+            width: 105px;
+            height: 105px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #e30613;
+            box-shadow: 0 0 30px rgba(227, 6, 19, .5);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 900;
         }
 
         .cruz {
-            font-size: 75px;
-            margin-bottom: 15px;
-            text-shadow:
-                0 0 10px white,
-                0 0 25px rgba(255,255,255,.4);
-            animation: float 3s ease-in-out infinite;
+            color: #e30613;
         }
 
-        @keyframes float {
-            0%,100% {
-                transform: translateY(0);
-```
+        .subtitulo {
+            margin-top: 15px;
+            font-size: 1.15rem;
+            color: #ccc;
+            letter-spacing: 2px;
+        }
+
+        .linha {
+            width: 100px;
+            height: 4px;
+            background: #e30613;
+            margin: 25px auto;
+        }
+
+        /* INTRO */
+
+        .intro {
+            max-width: 1000px;
+            margin: auto;
+            text-align: center;
+            padding: 70px 25px 35px;
+        }
+
+        .intro h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .intro p {
+            color: #bbb;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* PLAYERS */
+
+        .players {
+            max-width: 1450px;
+            margin: auto;
+            padding: 30px 25px 80px;
+        }
+
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .player {
+            position: relative;
+            background: linear-gradient(145deg, #181818, #090909);
+            border: 1px solid #333;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: .4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,.45);
+        }
+
+        .player:hover {
+            transform: translateY(-10px);
+            border-color: #e30613;
+            box-shadow:
+                0 20px 45px rgba(0,0,0,.7),
+                0 0 25px rgba(227,6,19,.15);
+        }
+
+        .player-image {
+            height: 270px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .player-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    transparent 45%,
+                    rgba(0,0,0,.9)
+                );
+        }
+
+        .player-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .player:hover img {
+            transform: scale(1.08);
+        }
+
+        .number {
+            position: absolute;
+            z-index: 3;
+            top: 15px;
+            right: 15px;
+            font-size: 2rem;
+            font-weight: 900;
+            color: rgba(255,255,255,.8);
+        }
+
+        .player-info {
+            padding: 22px;
+        }
+
+        .position {
+            color: #e30613;
+            text-transform: uppercase;
+            font-size: .75rem;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .player h3 {
+            font-size: 1.55rem;
+            margin: 8px 0 12px;
+        }
+
+        .player p {
+            color: #aaa;
+            line-height: 1.6;
+            font-size: .9rem;
+        }
+
+        /* DESTAQUE */
+
+        .featured {
+            grid-column: span 2;
+            background:
+                linear-gradient(135deg, #1a1a1a, #050505);
+            border-color: #e30613;
+        }
+
+        .featured .player-image {
+            height: 330px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid #333;
+            padding: 35px 20px;
+            text-align: center;
+            background: #050505;
+        }
+
+        footer strong {
+            color: #e30613;
+        }
+
+        footer p {
+            color: #777;
+            margin-top: 8px;
+        }
+
+        /* RESPONSIVIDADE */
+
+        @media (max-width: 1100px) {
+            .players-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .featured {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .players-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .player-image {
+                height: 240px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            header {
+                min-height: 350px;
+            }
+
+            .players-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .player-image,
+            .featured .player-image {
+                height: 300px;
+            }
+
+            .intro {
+                padding-top: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="hero">
+
+        <!-- Você pode trocar esta imagem pelo escudo que quiser -->
+        <img
+            class="escudo"
+            src="https://upload.wikimedia.org/wikipedia/commons/3/33/CRVascodagama.png"
+            alt="Escudo do Vasco da Gama"
+        >
+
+        <h1>
+            <span class="cruz">Vasco</span> da Gama
+        </h1>
+
+        <div class="linha"></div>
+
+        <p class="subtitulo">
+            O Gigante da Colina • Futebol • Tradição • Paixão
+        </p>
+
+    </div>
+
+</header>
+
+
+<section class="intro">
+
+    <h2>Gigante da Colina</h2>
+
+    <p>
+        Conheça alguns dos jogadores que fazem parte do elenco do
+        Vasco da Gama. Cada atleta possui uma função importante dentro
+        do sistema da equipe, desde a proteção do gol até a criação e
+        finalização das jogadas.
+    </p>
+
+</section>
+
+
+<section class="players">
+
+    <div class="players-grid">
+
+
+        <!-- 01 -->
+
+        <article class="player featured">
+
+            <div class="player-image">
+
+                <img
+                    src="https://www.netvasco.com.br/news/noticias16/arquivos/20260318-202411-1-.jpg"
+                    alt="Léo Jardim"
+                >
+
+                <span class="number">01</span>
+
+            </div>
+
+            <div class="player-info">
+
+                <span class="position">Goleiro</span>
+
+                <h3>Léo Jardim</h3>
+
+                <p>
+                    É o responsável por proteger a meta vascaína.
+                    Atua realizando defesas, orientando a linha defensiva
+                    e iniciando a construção das jogadas desde a defesa.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- 02 -->
+
+        <article class="player">
+
+            <div class="player-image">
+
+                <img
+                    src="https://media.meuvasco.com.br/20260503-203612-1-5.jpg"
+                    alt="Puma Rodríguez"
+                >
+
+                <span class="number">02</span>
+
+            </div>
+
+            <div class="player-info">
+
+                <span class="position">Lateral-direito</span>
+
+                <h3>Puma Rodríguez</h3>
+
+                <p>
+                    Atua pela lateral direita. Sua função envolve
+                    defender o corredor, apoiar o ataque e criar
+                    jogadas pelos lados do campo.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- 03 -->
+
+        <article class="player">
+
+            <div class="player-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=80"
+                    alt="Robert Renan"
+                >
+
+                <span class="number">04</span>
+
+            </div>
+
+            <div class="player-info">
+
+                <span class="position">Zagueiro</span>
+
+                <h3>Robert Renan</h3>
+
+                <p>
+                    Atua no centro da defesa. É responsável por marcar
+                    os atacantes adversários, cortar jogadas perigosas
+                    e ajudar na saída de bola.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- 04 -->
+
+        <article class="player">
+
+            <div class="player-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?auto=format&fit=crop&w=900&q=80"
+                    alt="Lucas Piton"
+                >
+
+                <span class="number">06</span>
+
+            </div>
+
+            <div class="player-info">
+
+                <span class="position">Lateral-esquerdo</span>
+
+                <h3>Lucas Piton</h3>
+
+                <p>
+                    Joga pelo lado esquerdo. Participa tanto da marcação
+                    quanto das ações ofensivas, podendo avançar e
+                    colaborar na criação de oportunidades.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- 05 -->
+
+        <article class="player">
+
+            <div class="player-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=900&q=80"
+                    alt="Santiago Sosa"
+                >
+
+                <span class="number">05</span>
+
+            </div>
+
+            <div class="player-info">
+
+                <span class="position">Volante</span>
+
+                <h3>Santiago Sosa</h3>
+
+                <p>
+                    Atua à frente da defesa. Ajuda na recuperação da bola,
+                    protege o setor defensivo e participa da distribuição
+                    das jogadas.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- 06 -->
+
+        <article class="player">
+
+            <div class="player-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?auto=format&fit=crop&w=900&q=80"
+                    alt="Tchê Tchê"
+                >
+
+                <span class="number">03</span>
+
+            </div>
+
+            <div class="player-info">
+
+                <span class="position">Meio-campista</span>
+
+                <h3>Tchê Tchê</h3>
+
+                <p>
+                    Ajuda a conectar defesa e ataque. Participa da troca
+                    de passes, da marcação e da organização do meio-campo.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- 07 -->
+
+        <article class="player">
+
+            <div class="player-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=900&q=80"
+                    alt="Thiago Mendes"
+                >
+
+                <span class="number">23</span>
+
+            </div>
+
+            <div class="player-info">
+
+                <span class="position">Meio-campista</span>
+
+                <h3>Thiago Mendes</h3>
+
+                <p>
+                    Atua no meio-campo, contribuindo para a circulação
+                    da bola, recuperação de posse e chegada ao ataque.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- 08 -->
+
+        <article class="player">
+
+            <div class="player-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=900&q=80"
+                    alt="Adson"
+                >
+
+                <span class="number">28</span>
+
+            </div>
+
+            <div class="player-info">
+
+                <span class="position">Atacante</span>
+
+                <h3>Adson</h3>
+
+                <p>
+                    Atua pelo setor ofensivo. Pode buscar o jogo pelos
+                    lados, driblar, criar oportunidades e participar
+                    das finalizações.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- 09 -->
+
+        <article class="player">
+
+            <div class="player-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1556056504-5c7696c4c28d?auto=format&fit=crop&w=900&q=80"
+                    alt="Andrés Gómez"
+                >
+
+                <span class="number">11</span>
+
+            </div>
+
+            <div class="player-info">
+
+                <span class="position">Atacante</span>
+
+                <h3>Andrés Gómez</h3>
+
+                <p>
+                    Atua no ataque buscando velocidade e profundidade.
+                    Pode participar das jogadas pelos lados e chegar
+                    à área para finalizar.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- 10 -->
+
+        <article class="player">
+
+            <div class="player-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?auto=format&fit=crop&w=900&q=80"
+                    alt="Colidio"
+                >
+
+                <span class="number">9</span>
+
+            </div>
+
+            <div class="player-info">
+
+                <span class="position">Atacante</span>
+
+                <h3>Colidio</h3>
+
+                <p>
+                    Atua no setor ofensivo procurando espaços para
+                    finalizar. Também pode participar da construção
+                    das jogadas e pressionar a defesa adversária.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- 11 -->
+
+        <article class="player">
+
+            <div class="player-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=80"
+                    alt="Bruno Duarte"
+                >
+
+                <span class="number">19</span>
+
+            </div>
+
+            <div class="player-info">
+
+                <span class="position">Atacante</span>
+
+                <h3>Bruno Duarte</h3>
+
+                <p>
+                    Atua na frente e busca aproveitar as oportunidades
+                    de finalização. Também participa da pressão sobre
+                    a defesa adversária.
+                </p>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <h3>
+        <strong>VASCO DA GAMA</strong>
+    </h3>
+
+    <p>
+        O time da virada • O time do amor
+    </p>
+
+    <p>
+        © 2026 — Página temática criada para fins educacionais.
+    </p>
+
+</footer>
+
+
+</body>
+</html>
