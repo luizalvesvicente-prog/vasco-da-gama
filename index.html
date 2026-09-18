@@ -1,0 +1,714 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vasco da Gama — Gigante da Colina</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at 50% 0%, #252525 0%, transparent 35%),
+                linear-gradient(135deg, #050505, #151515 50%, #050505);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* =========================================
+           FUNDO ANIMADO
+        ========================================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    45deg,
+                    transparent 48%,
+                    rgba(255,255,255,0.04) 50%,
+                    transparent 52%
+                );
+
+            background-size: 80px 80px;
+
+            animation: movimentoFundo 12s linear infinite;
+
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes movimentoFundo {
+
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: 500px 500px;
+            }
+        }
+
+
+        /* =========================================
+           CABEÇALHO
+        ========================================= */
+
+        header {
+            min-height: 500px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 40px 20px;
+
+            position: relative;
+            overflow: hidden;
+
+            border-bottom: 1px solid #333;
+        }
+
+        header::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            box-shadow:
+                0 0 80px rgba(255,255,255,0.08),
+                inset 0 0 80px rgba(255,255,255,0.04);
+
+            animation: girar 15s linear infinite;
+        }
+
+        @keyframes girar {
+
+            from {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(180deg) scale(1.08);
+            }
+
+            to {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+
+        /* CRUZ */
+
+        .cruz {
+
+            position: absolute;
+
+            width: 20px;
+            height: 110px;
+
+            background: white;
+
+            opacity: 0.06;
+
+            animation: flutuar 5s ease-in-out infinite;
+        }
+
+        .cruz::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 110px;
+            height: 20px;
+
+            background: white;
+
+            left: -45px;
+            top: 45px;
+        }
+
+        @keyframes flutuar {
+
+            0%,100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-25px) rotate(8deg);
+            }
+        }
+
+
+        .titulo {
+
+            position: relative;
+            z-index: 2;
+
+            font-size: clamp(3rem, 8vw, 7rem);
+
+            font-weight: 900;
+
+            letter-spacing: 5px;
+
+            text-transform: uppercase;
+
+            text-shadow:
+                0 0 10px rgba(255,255,255,0.5),
+                0 0 30px rgba(255,255,255,0.2);
+
+            animation:
+                entrada 1.2s ease,
+                brilho 4s ease-in-out infinite;
+        }
+
+        .titulo span {
+            color: #ffffff;
+        }
+
+        @keyframes brilho {
+
+            0%,100% {
+                text-shadow:
+                    0 0 10px rgba(255,255,255,0.4);
+            }
+
+            50% {
+                text-shadow:
+                    0 0 20px rgba(255,255,255,0.8),
+                    0 0 50px rgba(255,255,255,0.2);
+            }
+        }
+
+        .subtitulo {
+
+            position: relative;
+            z-index: 2;
+
+            margin-top: 15px;
+
+            font-size: clamp(1rem, 2vw, 1.4rem);
+
+            letter-spacing: 5px;
+
+            text-transform: uppercase;
+
+            color: #bcbcbc;
+
+            animation: entrada 1.7s ease;
+        }
+
+        .linha {
+
+            position: relative;
+            z-index: 2;
+
+            width: 150px;
+            height: 4px;
+
+            margin: 25px 0;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                white,
+                transparent
+            );
+
+            box-shadow: 0 0 15px white;
+        }
+
+        .descricao {
+
+            position: relative;
+            z-index: 2;
+
+            max-width: 750px;
+
+            line-height: 1.8;
+
+            color: #aaa;
+
+            animation: entrada 2s ease;
+        }
+
+        @keyframes entrada {
+
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* =========================================
+           CONTEÚDO
+        ========================================= */
+
+        main {
+
+            max-width: 1600px;
+
+            margin: auto;
+
+            padding: 60px 30px 90px;
+        }
+
+        .tituloSecao {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+        .tituloSecao h2 {
+
+            font-size: clamp(2rem, 4vw, 3.2rem);
+
+            margin-bottom: 10px;
+
+            text-shadow:
+                0 0 20px rgba(255,255,255,0.3);
+        }
+
+        .tituloSecao p {
+            color: #999;
+        }
+
+
+        /* =========================================
+           JOGADORES
+        ========================================= */
+
+        .jogadores {
+
+            display: flex;
+
+            gap: 20px;
+
+            overflow-x: auto;
+
+            padding: 20px 5px 40px;
+
+            scroll-snap-type: x mandatory;
+        }
+
+        .jogadores::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .jogadores::-webkit-scrollbar-track {
+            background: #111;
+            border-radius: 20px;
+        }
+
+        .jogadores::-webkit-scrollbar-thumb {
+
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #555,
+                #ffffff
+            );
+
+            border-radius: 20px;
+        }
+
+
+        /* =========================================
+           CARD
+        ========================================= */
+
+        .card {
+
+            flex: 0 0 235px;
+
+            min-height: 460px;
+
+            background:
+                linear-gradient(
+                    160deg,
+                    #202020,
+                    #090909
+                );
+
+            border: 1px solid #3b3b3b;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            position: relative;
+
+            scroll-snap-align: start;
+
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease,
+                border-color 0.4s ease;
+
+            animation: cardEntrada 0.8s ease backwards;
+        }
+
+        .card:nth-child(1) { animation-delay: .1s; }
+        .card:nth-child(2) { animation-delay: .2s; }
+        .card:nth-child(3) { animation-delay: .3s; }
+        .card:nth-child(4) { animation-delay: .4s; }
+        .card:nth-child(5) { animation-delay: .5s; }
+        .card:nth-child(6) { animation-delay: .6s; }
+        .card:nth-child(7) { animation-delay: .7s; }
+        .card:nth-child(8) { animation-delay: .8s; }
+        .card:nth-child(9) { animation-delay: .9s; }
+        .card:nth-child(10) { animation-delay: 1s; }
+        .card:nth-child(11) { animation-delay: 1.1s; }
+
+        @keyframes cardEntrada {
+
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card:hover {
+
+            transform:
+                translateY(-15px)
+                scale(1.03);
+
+            border-color: #fff;
+
+            box-shadow:
+                0 20px 45px rgba(0,0,0,0.8),
+                0 0 30px rgba(255,255,255,0.15);
+        }
+
+
+        /* =========================================
+           FOTO
+        ========================================= */
+
+        .foto {
+
+            height: 270px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background: #151515;
+        }
+
+        .foto img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition:
+                transform 0.7s ease,
+                filter 0.7s ease;
+        }
+
+        .card:hover .foto img {
+
+            transform: scale(1.12);
+
+            filter:
+                brightness(1.15)
+                contrast(1.1);
+        }
+
+        .foto::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    transparent 55%,
+                    rgba(0,0,0,0.95)
+                );
+        }
+
+
+        /* NÚMERO */
+
+        .numero {
+
+            position: absolute;
+
+            top: 15px;
+            left: 15px;
+
+            z-index: 3;
+
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 50%;
+
+            background: rgba(0,0,0,0.8);
+
+            border: 1px solid white;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 0 15px rgba(255,255,255,0.4);
+        }
+
+
+        /* =========================================
+           TEXTO DOS CARDS
+        ========================================= */
+
+        .conteudo {
+
+            padding: 15px 18px 25px;
+        }
+
+        .conteudo h3 {
+
+            font-size: 1.35rem;
+
+            margin-bottom: 5px;
+        }
+
+        .posicao {
+
+            display: inline-block;
+
+            font-size: .7rem;
+
+            letter-spacing: 1px;
+
+            color: #999;
+
+            text-transform: uppercase;
+
+            margin-bottom: 13px;
+        }
+
+        .conteudo p {
+
+            font-size: .9rem;
+
+            line-height: 1.6;
+
+            color: #aaa;
+        }
+
+        .tag {
+
+            display: inline-block;
+
+            margin-top: 15px;
+
+            padding: 6px 11px;
+
+            border-radius: 20px;
+
+            background: #1d1d1d;
+
+            border: 1px solid #444;
+
+            color: #ddd;
+
+            font-size: .7rem;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================
+           HISTÓRIA
+        ========================================= */
+
+        .historia {
+
+            margin-top: 50px;
+
+            padding: 40px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #151515,
+                    #080808
+                );
+
+            border: 1px solid #333;
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .historia h2 {
+
+            margin-bottom: 15px;
+
+            font-size: 2rem;
+        }
+
+        .historia p {
+
+            color: #aaa;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================
+           RODAPÉ
+        ========================================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 35px 20px;
+
+            border-top: 1px solid #292929;
+
+            color: #777;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+
+        /* =========================================
+           CELULAR
+        ========================================= */
+
+        @media(max-width:700px) {
+
+            header {
+                min-height: 430px;
+            }
+
+            header::before {
+                width: 300px;
+                height: 300px;
+            }
+
+            .titulo {
+                letter-spacing: 2px;
+            }
+
+            .subtitulo {
+                letter-spacing: 2px;
+            }
+
+            main {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .card {
+                flex-basis: 250px;
+            }
+
+            .historia {
+                padding: 25px 20px;
+            }
+        }
+
+
+        /* =========================================
+           DESKTOP GRANDE
+        ========================================= */
+
+        @media(min-width:1500px) {
+
+            .jogadores {
+                overflow-x: visible;
+            }
+
+            .card {
+                flex: 1 1 0;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ELEMENTO DECORATIVO -->
+
+    <div class="cruz"></div>
+
+
+    <!-- =========================================
+         CABEÇALHO
+    ========================================= -->
+
+    <header>
+
+        <h1 class="titulo">
+            VASCO
+        </h1>
+
+        <div class="subtitulo">
+            Gigante da Colina
+        </div>
+
+        <div class="linha"></div>
+
+        <p class="descricao">
+```
