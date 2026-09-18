@@ -2,57 +2,104 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Vasco da Gama — Gigante da Colina</title>
+    <title>Vasco da Gama — Gigante da Colina</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    background:
-        radial-gradient(circle at top, #252525 0%, #111 45%, #050505 100%);
-    color: white;
-    overflow-x: hidden;
-}
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at top, #252525 0%, #090909 45%, #000 100%);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-/* HEADER */
+        /* LINHA DECORATIVA */
+        body::before {
+            content: "";
+            position: fixed;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: rgba(255,255,255,0.025);
+            pointer-events: none;
+        }
 
-header {
-    min-height: 330px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-    border-bottom: 2px solid #c40000;
-}
+        /* HEADER */
+        header {
+            min-height: 430px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
 
-header::before {
-    content: "";
-    position: absolute;
-    width: 180%;
-    height: 90px;
-    background: #c40000;
-    transform: rotate(-8deg);
-    opacity: .85;
-    z-index: 0;
-}
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0,0,0,.92),
+                    rgba(20,20,20,.85)
+                );
+        }
 
-header::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
+        header::after {
+            content: "";
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle,
+                rgba(255,255,255,.10),
+                transparent 65%
+            );
+            animation: pulse 5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(.9);
+                opacity: .4;
+            }
+
+            to {
+                transform: scale(1.1);
+                opacity: .8;
+            }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            padding: 30px;
+        }
+
+        .cruz {
+            font-size: 75px;
+            margin-bottom: 15px;
+            text-shadow:
+                0 0 10px white,
+                0 0 25px rgba(255,255,255,.4);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%,100% {
+                transform: translateY(0);
 ```
-
